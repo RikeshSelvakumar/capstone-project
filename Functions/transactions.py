@@ -1,7 +1,7 @@
 #Function of generating unique id, add transaction, remove transaction, date validator
 import uuid
 from datetime import datetime, date
-from Functions.validators import date_validator, amount_validator, description_validator, type_validator, category_validator
+from Functions.validators import date_validator, amount_validator, description_validator, type_validator, category_validator, date_selection
 from Data.categories import INCOME_CATEGORIES, EXPENSE_CATEGORIES
 def generate_id():
     return str(uuid.uuid4()) # uuid4 ensures theres no duplicate id that is made.
@@ -43,16 +43,9 @@ def enter_values():
 
     #Date section
     while True:
-        today = input("Was the transaction done today (Y/N): ").lower().strip()
-        if today == "y":
-            input_date = datetime.now().strftime("%Y-%m-%d")
+        input_date = date_selection(input("Was the transaction done today (Y/N): ").lower().strip())
+        if input_date is not None:
             break
-        elif today == "n":
-            input_date = date_validator()
-            break
-        else:
-            print("Please enter Y/N")
-            continue
     return description, amount, transaction_type, category, input_date
 
 

@@ -65,3 +65,13 @@ def category_validator(transaction_type, entered):
         print("Something is wrong with the transaction type function")
         return entered
     return entered
+
+def date_selection(entered):
+    if entered == "y":
+        input_date = datetime.now().strftime("%Y-%m-%d")
+    elif entered == "n":
+        input_date = date_validator()
+    else:
+        print("Please enter y/n")
+        return None
+    return input_date
