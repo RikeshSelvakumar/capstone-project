@@ -1,15 +1,8 @@
 # Main program
-from Functions.transactions import enter_values, generate_id
+from Functions.transactions import add_transaction
+stored_transactions = []
 
-description, amount, transaction_type, category, input_date = enter_values()
-
-transaction = {
-    "id": generate_id(),
-    "description": description,
-    "amount": amount,
-    "transaction_type": transaction_type,
-    "category": category,
-    "date": input_date,
-}
-
-print(transaction)
+selection = int(input("Please select if you want to add a transaction (1) or remove a transaction(2): "))
+if selection == 1:
+    stored_transactions.append(add_transaction())
+print(stored_transactions)

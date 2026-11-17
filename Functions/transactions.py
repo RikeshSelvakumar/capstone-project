@@ -1,12 +1,15 @@
-#Function of generating unique id, add transaction, remove transaction, date validator
+#Function of generating unique id, add transaction and remove transaction 
+#TODO: When category is asked a string input breaks the code - change to try int()
+#TODO: Complete remove_transaction function as well as find a way to create a permanent save - ends up meaning finding a way to load and alter a csv file - research loading and modifying csv files
 import uuid
-from datetime import datetime, date
-from Functions.validators import date_validator, amount_validator, description_validator, type_validator, category_validator, date_selection
+from Functions.validators import amount_validator, description_validator, type_validator, category_validator, date_selection
 from Data.categories import INCOME_CATEGORIES, EXPENSE_CATEGORIES
+# Generate unique id for transation
 def generate_id():
     return str(uuid.uuid4()) # uuid4 ensures theres no duplicate id that is made.
 
-def enter_values():
+# Adding function - Collects inputted values from user and returns a dictionary of the transaction
+def add_transaction():
     print("Please enter your details here")
     # Description section
     while True:
@@ -46,17 +49,13 @@ def enter_values():
         input_date = date_selection(input("Was the transaction done today (Y/N): ").lower().strip())
         if input_date is not None:
             break
-    return description, amount, transaction_type, category, input_date
-
-
-
-description, amount, transaction_type, category, input_date = enter_values()
-
-transaction = {"id": generate_id(),
-"description": description,
-"amount": amount,
-"transaction_type": transaction_type,
-"category": category,
-"date": input_date
-}
-print(transaction)
+    # Transaction dict format
+    transaction = {
+    "id": generate_id(),
+    "description": description,
+    "amount": amount,
+    "transaction_type": transaction_type,
+    "category": category,
+    "date": input_date,
+    }
+    return transaction
