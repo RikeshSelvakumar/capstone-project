@@ -1,0 +1,6 @@
+1. Adding and removing transaction functions
+2. Viewing transaction function
+3. Monthly summary
+4. Editing previously made transactions
+5. Save and load
+6. (Maybe) Export the report onto an existing excel file or export report onto an csv file
