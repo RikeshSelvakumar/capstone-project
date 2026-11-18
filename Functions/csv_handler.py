@@ -1,8 +1,7 @@
 # File containing functions that handle the save in csv, load in csv and modify in csv
 import csv
 import os
-
-#File paths defining
+#File paths defined
 FUNCTIONS_DIR = os.path.dirname(os.path.abspath(__file__))  # Gets the path to the folder containing this python file specifically
 PROJECT_DIR = os.path.dirname(FUNCTIONS_DIR) # Cuts off the function folder from the path so its now on the main folder of the repo
 DATA_FILE = os.path.join(PROJECT_DIR,"Data","transactions.csv") # Creates the path for the transactions.csv folder - This is where transactions.csv will be made if its not already made
@@ -22,10 +21,15 @@ def add_transaction_to_csv(transaction):
             writer.writeheader()
         writer.writerow(transaction)
 
+def load_csv():
+    with open(DATA_FILE, "r", newline="") as f:
+        read = csv.DictReader(f)
+        transactions = list(read)
+    return transactions
 
-
-
-
+def delete_csv():
+    if os.path.isfile(DATA_FILE):
+        os.remove(DATA_FILE)
 
 
 # Testing + notes

@@ -1,6 +1,4 @@
 #Function of generating unique id, add transaction and remove transaction 
-#TODO: When category is asked a string input breaks the code - change to try int()
-#TODO: Complete remove_transaction function as well as find a way to create a permanent save - ends up meaning finding a way to load and alter a csv file - research loading and modifying csv files
 import uuid
 from Functions.validators import amount_validator, description_validator, type_validator, category_validator, date_selection
 from Data.categories import INCOME_CATEGORIES, EXPENSE_CATEGORIES
