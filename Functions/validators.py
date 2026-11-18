@@ -16,7 +16,7 @@ def date_validator():
             print("That is a future date - please try again")
             continue
         break
-    return entered_date
+    return entered_date.isoformat() # Date is shown as yyyy-mm-dd instead of datetime.(etc) in the dict
 
 #Amount validator - checks if integer or float and checks if the amount starts with a currency symbol
 def amount_validator(entered_amount):
